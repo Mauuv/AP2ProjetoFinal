@@ -27,4 +27,19 @@ public class Nota {
     public char getTIPO() {
         return TIPO;
     }
+    
+    @Override
+    public String toString(){
+        return "Número da nota: " + id
+        + System.lineSeparator() + "Transação: " + numeroTransacao
+        + System.lineSeparator() + "Tipo da nota: " + TIPO
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Nota)) return false;
+
+        return this.getNumeroTransacao() = o.getNumeroTransacao();
+    }
 }
