@@ -39,7 +39,7 @@ public class Nota {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Nota)) return false;
-
-        return this.getNumeroTransacao() = o.getNumeroTransacao();
+        Nota other = (Nota) o
+        return this.getNumeroTransacao() = other.getNumeroTransacao();
     }
 }
