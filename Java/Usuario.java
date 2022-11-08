@@ -49,7 +49,7 @@ public class Usuario {
         this.admin = admin;
     }
     
-            @Override
+    @Override
     public String toString(){
         return "Id: " + id
         + System.lineSeparator() + "Usuário: " + usuario
