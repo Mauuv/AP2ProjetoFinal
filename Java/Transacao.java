@@ -78,4 +78,22 @@ public class Transacao {
     public void setStatus(boolean status) {
         this.status = status;
     }
+    
+            @Override
+    public String toString(){
+        return "Numero da Transação: " + numeroTransacao
+        + System.lineSeparator() + "Forma de pagamento: " + formaPagamento.getNome()
+        + System.lineSeparator() + "Itens: " + itens
+        + System.lineSeparator() + "Valor Total: " + valorTotal
+        + System.lineSeparator() + "CPF: " + CPF
+        + System.lineSeparator() + "Válida: " + status    
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transacao)) return false;
+        Transacao other = (Transacao) o
+        return this.getNumeroTransacao() = other.getNumeroTransacao();
+    }
 }
