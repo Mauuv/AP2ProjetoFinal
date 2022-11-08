@@ -48,4 +48,19 @@ public class Produto {
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
+    
+        @Override
+    public String toString(){
+        return "Número da nota: " + id
+        + System.lineSeparator() + "Transação: " + numeroTransacao
+        + System.lineSeparator() + "Tipo da nota: " + TIPO
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Produto)) return false;
+        Produto other = (Produto) o
+        return this.getId() = other.getId();
+    }
 }
