@@ -51,9 +51,10 @@ public class Produto {
     
         @Override
     public String toString(){
-        return "Número da nota: " + id
-        + System.lineSeparator() + "Transação: " + numeroTransacao
-        + System.lineSeparator() + "Tipo da nota: " + TIPO
+        return "Id: " + id
+        + System.lineSeparator() + "Descrição: " + descricao
+        + System.lineSeparator() + "Estoque: " + estoque
+        + System.lineSeparator() + "Valor Final: " + valorFinal
     }
     
     @Override
