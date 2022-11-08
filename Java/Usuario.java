@@ -48,4 +48,20 @@ public class Usuario {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+    
+            @Override
+    public String toString(){
+        return "Id: " + id
+        + System.lineSeparator() + "Usuário: " + usuario
+        + System.lineSeparator() + "Senha: " + senha
+        + System.lineSeparator() + "Admin: " + admin
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario other = (Usuario) o
+        return this.getUsuario().equals(other.getUsuario());
+    }
 }
