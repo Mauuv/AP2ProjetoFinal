@@ -41,7 +41,7 @@ id INT PK
 Produtos INT FK
 ValorTotal Decimal
 Forma de pagamento (ENUM: DINHEIRO, CARTAO (credito, debito, vale))
-Status Boolean
+Status Boolean // o status será o seguinte -> True: normal; False: cancelada.
 
 Nota
 id INT PK
