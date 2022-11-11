@@ -5,12 +5,11 @@ Estrutura e linha de raciocínio do trabalho
 
 Nome: Alysson e Maurício 
 
--- Mercado (Clientes, Produtos)
+-- Mercado (Produtos)
 -- Estudar implementação de preço (venda/custo)
 -- Estoque (Arraylist de produtos)
 -- PDV (Arraylist de produtos) 
 -- Cadastro de produto
--- Cadastro de cliente
 -- Lançamento de nota (Excel)
 
 Usuario
