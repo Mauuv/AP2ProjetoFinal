@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.InitViewController">
+   <Button layoutX="54.0" layoutY="285.0" mnemonicParsing="false" onAction="#StartPDV" prefHeight="60.0"
+           prefWidth="150.0" text="PDV"/>
+   <Button layoutX="397.0" layoutY="285.0" mnemonicParsing="false" onAction="#StartGerenciamento" prefHeight="60.0"
+           prefWidth="150.0" text="Gerenciamento"/>
+   <ImageView fitHeight="247.0" fitWidth="251.0" layoutX="177.0" layoutY="38.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@img/Favicon.png"/>
+   </ImageView>
+</AnchorPane>
