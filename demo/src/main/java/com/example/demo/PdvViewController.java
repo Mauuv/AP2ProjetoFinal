@@ -1,17 +1,29 @@
 package com.example.demo;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class PdvViewController implements Initializable {
+import java.io.IOException;
+import java.math.BigDecimal;
+
+public class PdvViewController {
+
     @FXML
     private TextField TxtProduto;
 
     @FXML
+    private TextArea TotalItens;
+
+    @FXML
     void AddCarrinho(ActionEvent event) {
+        double Total = 1.2;
+        for (int i = 0; i<= TxtProduto.getLength(); i ++){
+            Total += Produto.getValorFinal();
+          //  TotalItens = Total;
+        }
 
     }
 
@@ -20,8 +32,9 @@ public class PdvViewController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    @FXML
+    void Return(ActionEvent event) throws IOException {
+        ((Stage)TxtProduto.getScene().getWindow()).close();
     }
+
 }

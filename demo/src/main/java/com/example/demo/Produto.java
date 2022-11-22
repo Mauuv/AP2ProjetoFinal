@@ -1,3 +1,4 @@
+// Maurício
 package com.example.demo;
 
 import java.math.BigDecimal;
@@ -5,10 +6,10 @@ import java.math.BigDecimal;
 public class Produto {
     private int id;
     private String descricao;
-    private BigDecimal valorFinal;
+    private static double valorFinal;
     private int estoque;
 
-    public Produto(String descricao, BigDecimal valorFinal, int estoque) {
+    public Produto(String descricao, double valorFinal, int estoque) {
         this.descricao = descricao;
         this.valorFinal = valorFinal;
         this.estoque = estoque;
@@ -35,11 +36,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public BigDecimal getValorFinal() {
+    public static double getValorFinal() {
         return valorFinal;
     }
 
-    public void setValorFinal(BigDecimal valorFinal) {
+    public void setValorFinal(double valorFinal) {
         this.valorFinal = valorFinal;
     }
 

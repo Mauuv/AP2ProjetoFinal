@@ -1,10 +1,11 @@
+// Maurício
 package com.example.demo;
 
 public class Usuario {
     private int id;
     private String usuario;
     private String senha;
-    private boolean admin;
+    private static boolean admin = false;
 
     public Usuario(String usuario, String senha, boolean admin) {
         this.usuario = usuario;
@@ -43,7 +44,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public boolean isAdmin() {
+    public static boolean isAdmin() {
         return admin;
     }
 
