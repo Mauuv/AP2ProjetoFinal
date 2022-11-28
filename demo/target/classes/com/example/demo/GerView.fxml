@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx"
+            prefWidth="600.0" xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.demo.GerViewController">
    <Button layoutX="25.0" layoutY="288.0" mnemonicParsing="false" onAction="#Cadastro" prefHeight="34.0"
            prefWidth="182.0" text="Cadastro de Produtos"/>

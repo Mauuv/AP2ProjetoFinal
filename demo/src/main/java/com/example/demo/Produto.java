@@ -3,21 +3,14 @@ package com.example.demo;
 
 import java.math.BigDecimal;
 
-public class Produto {
+public class    Produto {
     private int id;
     private String descricao;
     private static double valorFinal;
     private int estoque;
+    private String unidade;
 
-    public Produto(String descricao, double valorFinal, int estoque) {
-        this.descricao = descricao;
-        this.valorFinal = valorFinal;
-        this.estoque = estoque;
-    }
-
-    public Produto(int estoque, String descricao) {
-        this.descricao = descricao;
-        this.estoque = estoque;
+    public Produto() {
     }
 
     public int getId() {
@@ -36,7 +29,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public static double getValorFinal() {
+    public double getValorFinal() {
         return valorFinal;
     }
 
@@ -51,8 +44,16 @@ public class Produto {
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
-    
-        @Override
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
+
+    @Override
     public String toString(){
         return "Id: " + id
         + System.lineSeparator() + "Descrição: " + descricao

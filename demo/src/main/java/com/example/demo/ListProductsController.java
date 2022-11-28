@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -11,17 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class PdvViewController implements Initializable {
+public class ListProductsController implements Initializable {
 
     @FXML
-    private TableView<Produto> carrinho;
+    private TableView<Object> ListaProduto;
+    @FXML
+    private TableColumn<Produto, Integer> amount;
+
     @FXML
     private TableColumn<Produto, String> description;
 
@@ -34,40 +32,27 @@ public class PdvViewController implements Initializable {
     @FXML
     private TableColumn<Produto, Double> value;
 
+    private ObservableList<Object> observableList;
     @FXML
-    private TextField TxtProduto;
+    void voltar(ActionEvent event) {
+        ((Stage)ListaProduto.getScene().getWindow()).close();
+    }
 
     @FXML
-    private TextArea TotalItens;
-
-    private ObservableList<Produto> observableList;
-
-    @FXML
-    void AddCarrinho(ActionEvent event) {
+    void ListarProduto(){
         DaoProduto dao = new DaoProduto();
-        int idProd = Integer.parseInt(TxtProduto.getText());
-        List<Produto> ListProduto = Collections.singletonList(dao.pesquisar(idProd));
         id.setCellValueFactory(new PropertyValueFactory<>("ID"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         value.setCellValueFactory(new PropertyValueFactory<>("value"));
+        amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         unit.setCellValueFactory(new PropertyValueFactory<>("unit"));
 
-        observableList = FXCollections.observableList(ListProduto);
-        carrinho.setItems(observableList);
-    }
-
-    @FXML
-    void Finalizar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Return(ActionEvent event) throws IOException {
-        ((Stage)TxtProduto.getScene().getWindow()).close();
+        observableList = FXCollections.observableList(dao.pesquisarTodos());
+        ListaProduto.setItems(observableList);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ListarProduto();
     }
 }

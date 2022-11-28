@@ -16,8 +16,7 @@ public class GerViewController implements Initializable {
 
     @FXML
     void Cadastro(ActionEvent event) throws IOException {
-
-            FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("ProductRegistrationView.fxml"));
+            FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("ProductRegistrationView.fxml"));
             Scene scene = new Scene(fx.load());
             Stage st = new Stage();
             st.setTitle("Cadastro de Produtos");
@@ -33,7 +32,7 @@ public class GerViewController implements Initializable {
 
     @FXML
     void Lista(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("GerView.fxml"));
+        FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("ListProductsView.fxml"));
         Scene scene = new Scene(fx.load());
         Stage st = new Stage();
         st.setTitle("Gerenciamento");

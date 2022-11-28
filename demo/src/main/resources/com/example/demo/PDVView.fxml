@@ -25,20 +25,21 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <TableView layoutX="359.0" layoutY="50.0" prefHeight="282.0" prefWidth="226.0">
+   <TableView fx:id="carrinho" layoutX="289.0" layoutY="50.0" prefHeight="282.0" prefWidth="296.0">
       <columns>
-         <TableColumn prefWidth="75.0" text="Código" />
-         <TableColumn prefWidth="75.0" text="Descrição" />
-         <TableColumn prefWidth="75.0" text="Valor" />
+         <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+         <TableColumn fx:id="description" prefWidth="75.0" text="Descrição" />
+         <TableColumn fx:id="value" prefWidth="75.0" text="Valor" />
+         <TableColumn fx:id="unit" prefWidth="75.0" text="Unidade" />
       </columns>
    </TableView>
-   <TextField fx:id="TxtProduto" layoutX="112.0" layoutY="200.0" />
-   <Label layoutY="199.0" text="Produto pica">
+   <TextField fx:id="TxtProduto" layoutX="96.0" layoutY="151.0" />
+   <Label layoutX="18.0" layoutY="150.0" text="Produto">
       <font>
          <Font size="18.0" />
       </font>
    </Label>
-   <Button layoutX="274.0" layoutY="200.0" mnemonicParsing="false" onAction="#AddCarrinho" text="Adicionar" />
+   <Button layoutX="137.0" layoutY="200.0" mnemonicParsing="false" onAction="#AddCarrinho" text="Adicionar" />
    <Button layoutX="22.0" layoutY="344.0" mnemonicParsing="false" onAction="#Finalizar" prefHeight="35.0" prefWidth="131.0" text="Finalizar" />
    <Button layoutX="22.0" layoutY="10.0" mnemonicParsing="false" onAction="#Return" prefHeight="5.0" prefWidth="95.0" text="Voltar" />
    <TextArea fx:id="TotalItens" layoutX="434.0" layoutY="342.0" prefHeight="38.0" prefWidth="150.0" />

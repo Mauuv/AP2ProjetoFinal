@@ -25,7 +25,6 @@ public class LoginController implements Initializable {
     InitViewController controller;
 
 
-
     @FXML
     void login(ActionEvent event) throws IOException {
         //if (Usuario.isAdmin()) {

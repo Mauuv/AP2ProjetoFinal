@@ -15,7 +15,7 @@ public class InitViewController {
 
     @FXML
     public void StartGerenciamento(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("LoginView.fxml"));
+        FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("GerView.fxml"));
         Scene scene = new Scene(fx.load());
         Stage st = new Stage();
         st.setTitle("Gerenciamento");
@@ -26,7 +26,6 @@ public class InitViewController {
 
     @FXML
     public void StartPDV(ActionEvent event) throws IOException {
-        //stage.show();
         FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("PDVView.fxml"));
         Scene scene = new Scene(fx.load());
         Stage st = new Stage();

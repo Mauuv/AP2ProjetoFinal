@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.demo.ProductRegistrationController">
+   <children>
+      <ImageView fitHeight="164.0" fitWidth="234.0" layoutX="218.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Favicon.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="description" layoutX="68.0" layoutY="209.0" promptText="Descrição" />
+      <TextField fx:id="value" layoutX="68.0" layoutY="247.0" promptText="Valor" />
+      <TextField fx:id="amount" layoutX="68.0" layoutY="287.0" promptText="Quantidade" />
+      <TextField fx:id="unit" layoutX="68.0" layoutY="328.0" promptText="Unidade" />
+      <Button layoutX="300.0" layoutY="267.0" mnemonicParsing="false" onAction="#btnCadastrar" prefHeight="39.0" prefWidth="94.0" text="Cadastrar" />
+   </children>
+</AnchorPane>
