@@ -16,7 +16,7 @@ public class DaoProduto implements Dao {
             PreparedStatement stmt = connection.prepareStatement(SqlConstantes.INSERT);
             stmt.setString(1, prod.getDescricao());
             stmt.setDouble(2, prod.getValorFinal());
-            stmt.setInt(3, prod.getEstoque());
+            stmt.setDouble(3, prod.getEstoque());
             stmt.setString(4, prod.getUnidade());
             stmt.execute();
             stmt.close();
@@ -37,7 +37,7 @@ public class DaoProduto implements Dao {
             PreparedStatement stmt = connection.prepareStatement(SqlConstantes.UPDATE);
             stmt.setString(1, prod.getDescricao());
             stmt.setDouble(2, prod.getValorFinal());
-            stmt.setInt(3, prod.getEstoque());
+            stmt.setDouble(3, prod.getEstoque());
             stmt.setString(4, prod.getUnidade());
             stmt.setInt(5, prod.getId());
             stmt.execute();
@@ -96,11 +96,11 @@ public class DaoProduto implements Dao {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 Produto prod = new Produto();
-                prod.setId(rs.getInt("ID"));
-                prod.setDescricao(rs.getString("description"));
-                prod.setValorFinal(rs.getDouble("value"));
-                prod.setEstoque(rs.getInt("amount"));
-                prod.setUnidade(rs.getString("unit"));
+                prod.setId(rs.getInt("id"));
+                prod.setDescricao(rs.getString("Description"));
+                prod.setValorFinal(rs.getDouble("Value"));
+                prod.setEstoque(rs.getInt("Amount"));
+                prod.setUnidade(rs.getString("Unit"));
                 produtos.add(prod);
             }
             rs.close();

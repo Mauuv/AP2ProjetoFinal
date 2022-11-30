@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,12 +10,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import static javafx.collections.FXCollections.observableArrayList;
+
 public class ListProductsController implements Initializable {
 
     @FXML
     private TableView<Object> ListaProduto;
     @FXML
-    private TableColumn<Produto, Integer> amount;
+    private TableColumn<Produto, Double> amount;
 
     @FXML
     private TableColumn<Produto, String> description;
@@ -32,27 +34,28 @@ public class ListProductsController implements Initializable {
     @FXML
     private TableColumn<Produto, Double> value;
 
-    private ObservableList<Object> observableList;
     @FXML
     void voltar(ActionEvent event) {
         ((Stage)ListaProduto.getScene().getWindow()).close();
     }
 
     @FXML
-    void ListarProduto(){
+    ObservableList<Object> ListarProduto(){
         DaoProduto dao = new DaoProduto();
-        id.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        value.setCellValueFactory(new PropertyValueFactory<>("value"));
-        amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        unit.setCellValueFactory(new PropertyValueFactory<>("unit"));
+        ObservableList<Object> ListaProduto = FXCollections.observableList(dao.pesquisarTodos());
 
-        observableList = FXCollections.observableList(dao.pesquisarTodos());
-        ListaProduto.setItems(observableList);
+        return ListaProduto;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListarProduto();
+        id.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("id"));
+        description.setCellValueFactory(new PropertyValueFactory<Produto, String>("Descricao"));
+        value.setCellValueFactory(new PropertyValueFactory<Produto, Double>("ValorFinal"));
+        amount.setCellValueFactory(new PropertyValueFactory<Produto, Double>("Estoque"));
+        unit.setCellValueFactory(new PropertyValueFactory<Produto, String>("Unidade"));
+
+        System.out.println(ListarProduto());
+        ListaProduto.setItems(ListarProduto());
     }
 }

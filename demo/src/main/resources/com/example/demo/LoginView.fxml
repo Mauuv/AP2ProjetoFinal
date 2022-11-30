@@ -9,8 +9,8 @@
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.LoginController">
-            fx:controller="com.example.demo.LoginController">
+            prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.LoginViewController">
+            fx:controller="com.example.demo.LoginViewController">
    <ImageView fitHeight="206.0" fitWidth="335.0" layoutX="197.0" layoutY="14.0" pickOnBounds="true"
               preserveRatio="true">
       <Image url="img/Favicon.png"/>

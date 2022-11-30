@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     public static Connection getConnection(){
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/BigBom","root","");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/BigBom","root","root");
             System.out.println("Conectado com sucesso");
             return con;
         } catch (SQLException e) {

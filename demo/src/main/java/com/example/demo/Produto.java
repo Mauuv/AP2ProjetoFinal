@@ -7,7 +7,7 @@ public class    Produto {
     private int id;
     private String descricao;
     private static double valorFinal;
-    private int estoque;
+    private double estoque;
     private String unidade;
 
     public Produto() {
@@ -37,11 +37,11 @@ public class    Produto {
         this.valorFinal = valorFinal;
     }
 
-    public int getEstoque() {
+    public double getEstoque() {
         return estoque;
     }
 
-    public void setEstoque(int estoque) {
+    public void setEstoque(double estoque) {
         this.estoque = estoque;
     }
 
@@ -50,7 +50,7 @@ public class    Produto {
     }
 
     public void setUnidade(String unidade) {
-        this.unidade = unidade;
+        this.unidade = unidade.toUpperCase();
     }
 
     @Override
@@ -58,7 +58,8 @@ public class    Produto {
         return "Id: " + id
         + System.lineSeparator() + "Descrição: " + descricao
         + System.lineSeparator() + "Estoque: " + estoque
-        + System.lineSeparator() + "Valor Final: " + valorFinal;
+        + System.lineSeparator() + "Valor Final: " + valorFinal
+        + System.lineSeparator() + "Unidade: " + unidade;
     }
     
     @Override
