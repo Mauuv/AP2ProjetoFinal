@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,19 +16,21 @@ public class DaoProduto implements Dao {
         Produto prod = (Produto) o;
         try{
             Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement stmt = connection.prepareStatement(SqlConstantes.INSERT);
+            PreparedStatement stmt = connection.prepareStatement(SqlConstantesProduto.INSERT);
             stmt.setString(1, prod.getDescricao());
             stmt.setDouble(2, prod.getValorFinal());
-            stmt.setInt(3, prod.getEstoque());
+            stmt.setDouble(3, prod.getEstoque());
             stmt.setString(4, prod.getUnidade());
             stmt.execute();
             stmt.close();
             connection.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Erro ao inserir dados na tabela!");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao inserir", ButtonType.OK);
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
-        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!!");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cadastrado com sucesso", ButtonType.OK);
+        alert.showAndWait();
         return true;
     }
 
@@ -34,21 +39,22 @@ public class DaoProduto implements Dao {
         Produto prod = (Produto) o;
         try{
             Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement stmt = connection.prepareStatement(SqlConstantes.UPDATE);
+            PreparedStatement stmt = connection.prepareStatement(SqlConstantesProduto.UPDATE);
             stmt.setString(1, prod.getDescricao());
             stmt.setDouble(2, prod.getValorFinal());
-            stmt.setInt(3, prod.getEstoque());
+            stmt.setDouble(3, prod.getEstoque());
             stmt.setString(4, prod.getUnidade());
             stmt.setInt(5, prod.getId());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null,"Erro ao alterar dados do produto "+ prod.getDescricao());
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao alterar", ButtonType.OK);
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
-        JOptionPane.showMessageDialog(null, "Alterado com sucesso!!");
-
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Alterado com sucesso", ButtonType.OK);
+        alert.showAndWait();
         return true;
     }
 
@@ -57,31 +63,35 @@ public class DaoProduto implements Dao {
         Produto prod = (Produto) o;
         try{
             Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement stmt = connection.prepareStatement(SqlConstantes.REMOVE);
+            PreparedStatement stmt = connection.prepareStatement(SqlConstantesProduto.REMOVE);
             stmt.setInt(1, prod.getId());
             stmt.execute();
             stmt.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro ao remover produto " + prod.getDescricao());
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro na remoção", ButtonType.OK);
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
-        JOptionPane.showMessageDialog(null, "Removido com sucesso!!");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Removido com sucesso", ButtonType.OK);
+        alert.showAndWait();
         return true;
 
     }
 
     @Override
-    public Produto pesquisar(int o) {
+    public Produto pesquisar(Object o) {
+        Integer integer = (Integer) o;
         List<Object> todos = new DaoProduto().pesquisarTodos();
 
         for (Object pp : todos){
             Produto prod = (Produto) pp;
-            if(prod.getId() == o){
+            if(prod.getId() == integer){
                 return prod;
             }else{
-                JOptionPane.showMessageDialog(null,"Produto com o código " + o + " não foi encontrado!");
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Produto com o código " + o + " não foi encontrado!", ButtonType.OK);
+                alert.showAndWait();
             }
         }
         return null;
@@ -92,21 +102,22 @@ public class DaoProduto implements Dao {
         List<Object> produtos = new ArrayList<>();
         try{
             Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement stmt = connection.prepareStatement(SqlConstantes.SEARCH);
+            PreparedStatement stmt = connection.prepareStatement(SqlConstantesProduto.SEARCH);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 Produto prod = new Produto();
-                prod.setId(rs.getInt("ID"));
-                prod.setDescricao(rs.getString("description"));
-                prod.setValorFinal(rs.getDouble("value"));
-                prod.setEstoque(rs.getInt("amount"));
-                prod.setUnidade(rs.getString("unit"));
+                prod.setId(rs.getInt("id"));
+                prod.setDescricao(rs.getString("Description"));
+                prod.setValorFinal(rs.getDouble("Value"));
+                prod.setEstoque(rs.getInt("Amount"));
+                prod.setUnidade(rs.getString("Unit"));
                 produtos.add(prod);
             }
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Erro ao pesquisar produtos!!");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao pesquisar produtos!!", ButtonType.OK);
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
         return produtos;

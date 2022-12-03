@@ -1,9 +1,9 @@
 package com.example.demo;
 
+import java.io.FileOutputStream;
 import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
 
@@ -26,11 +30,15 @@ public class PdvViewController implements Initializable {
     private TableColumn<Produto, String> description;
 
     @FXML
+    private TextField qtProduto;
+    @FXML
     private TableColumn<Produto, Integer> id;
 
     @FXML
     private TableColumn<Produto, String> unit;
 
+    @FXML
+    private TableColumn<Produto, Double> amount;
     @FXML
     private TableColumn<Produto, Double> value;
 
@@ -50,6 +58,7 @@ public class PdvViewController implements Initializable {
         id.setCellValueFactory(new PropertyValueFactory<>("ID"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         value.setCellValueFactory(new PropertyValueFactory<>("value"));
+        amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         unit.setCellValueFactory(new PropertyValueFactory<>("unit"));
 
         observableList = FXCollections.observableList(ListProduto);
@@ -58,7 +67,10 @@ public class PdvViewController implements Initializable {
 
     @FXML
     void Finalizar(ActionEvent event) {
-
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet("Cupom Fiscal");
+        Map<String, Object[]> data = new TreeMap<String, Object[]>();
+        data.put("1", new Object[]{"Descricao", "Valor", "Quantidade", "Unidade"});
     }
 
     @FXML
