@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+
 public class DaoProduto implements Dao {
     @Override
     public boolean adicionar(Object o) {
@@ -85,15 +85,14 @@ public class DaoProduto implements Dao {
         Integer integer = (Integer) o;
         List<Object> todos = new DaoProduto().pesquisarTodos();
 
-        for (Object pp : todos){
+        for (Object pp : todos) {
             Produto prod = (Produto) pp;
-            if(prod.getId() == integer){
+            if (prod.getId() == integer) {
                 return prod;
-            }else{
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Produto com o código " + o + " não foi encontrado!", ButtonType.OK);
-                alert.showAndWait();
             }
         }
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Produto com o código " + o + " não foi encontrado!", ButtonType.OK);
+        alert.showAndWait();
         return null;
     }
 

@@ -40,7 +40,7 @@
       </font>
    </Label>
    <Button layoutX="119.0" layoutY="210.0" mnemonicParsing="false" onAction="#AddCarrinho" text="Adicionar" />
-   <Button layoutX="22.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="131.0" text="Finalizar" />
+   <Button layoutX="22.0" layoutY="344.0" mnemonicParsing="false" onAction="#Finalizar" prefHeight="35.0" prefWidth="131.0" text="Finalizar" />
    <Button layoutX="22.0" layoutY="10.0" mnemonicParsing="false" onAction="#Return" prefHeight="5.0" prefWidth="95.0" text="Voltar" />
    <TextField fx:id="qtProduto" layoutX="109.0" layoutY="178.0" prefHeight="26.0" prefWidth="86.0" promptText="Quantidade" />
    <Label fx:id="TotalItens" layoutX="433.0" layoutY="344.0" prefHeight="27.0" prefWidth="109.0">

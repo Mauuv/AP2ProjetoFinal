@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.*;
 
@@ -12,6 +14,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.RichTextString;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
 
@@ -49,8 +56,14 @@ public class PdvViewController implements Initializable {
     @FXML
     void AddCarrinho(ActionEvent event) {
         double soma = 0;
+        int idProd = 0;
         DaoProduto dao = new DaoProduto();
-        int idProd = Integer.parseInt(TxtProduto.getText());
+        try {
+            idProd = Integer.parseInt(TxtProduto.getText());
+        } catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Somente numeros inteiros", ButtonType.OK);
+            alert.showAndWait();
+        }
         List<Produto> ListProduto = Collections.singletonList(dao.pesquisar(idProd));
         id.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("id"));
         description.setCellValueFactory(new PropertyValueFactory<Produto, String>("Descricao"));
@@ -61,9 +74,14 @@ public class PdvViewController implements Initializable {
         carrinho.setItems(observableList);
 
         for (Produto a : observableList){
-            double Total;
-           Total = a.getEstoque() * a.getValorFinal();
-           soma += Total;
+            try {
+                double Total;
+                Total = a.getEstoque() * a.getValorFinal();
+                soma += Total;
+            } catch (NullPointerException e) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Produto não existe", ButtonType.OK);
+                alert.showAndWait();
+            }
         }
         TotalItens.setText(String.valueOf(soma));
         BooleanBinding selected = carrinho.getSelectionModel().selectedItemProperty().isNull();
@@ -92,17 +110,22 @@ public class PdvViewController implements Initializable {
 
     @FXML
     void Finalizar(ActionEvent event) {
-        /*int contador = 1;
+        System.out.println(observableList);
+
+        int contador = 1;
+
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Cupom Fiscal");
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
 
-        data.put(String.valueOf(contador), new Object[]{"Descricao", "Valor", "Quantidade", "Unidade"});
+        data.put(String.valueOf(contador), new Object[]{"Id", "Descricao", "Quantidade", "Unidade", "Preço"});
 
-       for(Produto) {produto: //nome da lista ou array){
+       for(Produto produto: observableList){
             contador++;
-            data.put(String.valueOf(contador), new Object[])//Getters para pegar os valoresd os atributos dos produtos);
+            data.put(String.valueOf(contador), new Object[]{produto.getId(), produto.getDescricao(), produto.getEstoque(), produto.getUnidade(), produto.getValorFinal()});
         }
+        contador++;
+        data.put(String.valueOf(contador),  new Object[]{"", "", "", "Valor total:", TotalItens});
         Set<String> keyset = data.keySet();
         int rownum = 0;
 
@@ -112,15 +135,17 @@ public class PdvViewController implements Initializable {
             int cellnum = 0;
 
             for(Object obj: objarr){
-                Cell cell = row.createCell(cellnum++);
+                Cell linha = row.createCell(cellnum++);
                 if (obj instanceof String){
-                    cell.setCellValue((String) obj);
+                    linha.setCellValue((String) obj);
                 }
                 else if (obj instanceof Integer){
-                    cell.setCellValue((Integer) obj);
+                    linha.setCellValue((Integer) obj);
                 }
-                else if (obj instanceof Float){
-                    cell.setCellValue((Float) obj);
+                else if (obj instanceof Double){
+                    linha.setCellValue((Double) obj);
+                } else if (obj instanceof Label){
+                    linha.setCellValue(((Label) obj).getText());
                 }
             }
         }
@@ -133,12 +158,12 @@ public class PdvViewController implements Initializable {
             workbook.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Arquivo nao encontrado!", ButtonType.OK);
-            alert.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro", ButtonType.OK);
-        }*/
+        } catch (RuntimeException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao gerar nota", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
 
     @FXML
