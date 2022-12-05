@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -27,11 +26,11 @@
    </Label>
    <TableView fx:id="carrinho" layoutX="243.0" layoutY="50.0" prefHeight="282.0" prefWidth="342.0">
       <columns>
-         <TableColumn fx:id="id" prefWidth="51.20001220703125" text="ID" />
-         <TableColumn fx:id="description" prefWidth="99.20001220703125" text="Descrição" />
-         <TableColumn fx:id="value" prefWidth="60.79998779296875" text="Valor" />
-         <TableColumn fx:id="amount" prefWidth="90.39996337890625" text="Quantidade" />
-         <TableColumn fx:id="unit" prefWidth="38.39999999999998" text="Unidade" />
+         <TableColumn fx:id="id" editable="false" prefWidth="32.0" text="ID" />
+         <TableColumn fx:id="description" editable="false" prefWidth="100.0" text="Descrição" />
+         <TableColumn fx:id="value" editable="false" prefWidth="62.4000244140625" text="Valor" />
+         <TableColumn fx:id="amount" editable="false" prefWidth="81.5999755859375" text="Quantidade" />
+         <TableColumn fx:id="unit" prefWidth="65.5999755859375" text="Unidade" />
       </columns>
    </TableView>
    <TextField fx:id="TxtProduto" layoutX="78.0" layoutY="151.0" />
@@ -41,13 +40,12 @@
       </font>
    </Label>
    <Button layoutX="119.0" layoutY="210.0" mnemonicParsing="false" onAction="#AddCarrinho" text="Adicionar" />
-   <Button layoutX="22.0" layoutY="344.0" mnemonicParsing="false" onAction="#Finalizar" prefHeight="35.0" prefWidth="131.0" text="Finalizar" />
+   <Button layoutX="22.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="131.0" text="Finalizar" />
    <Button layoutX="22.0" layoutY="10.0" mnemonicParsing="false" onAction="#Return" prefHeight="5.0" prefWidth="95.0" text="Voltar" />
-   <TextArea fx:id="TotalItens" layoutX="434.0" layoutY="342.0" prefHeight="38.0" prefWidth="150.0" />
    <TextField fx:id="qtProduto" layoutX="109.0" layoutY="178.0" prefHeight="26.0" prefWidth="86.0" promptText="Quantidade" />
-   <Label layoutX="14.0" layoutY="177.0">
+   <Label fx:id="TotalItens" layoutX="433.0" layoutY="344.0" prefHeight="27.0" prefWidth="109.0">
       <font>
-         <Font size="18.0" />
-      </font>
-   </Label>
+         <Font size="24.0" />
+      </font></Label>
+   <Button fx:id="btnDel" layoutX="113.0" layoutY="266.0" mnemonicParsing="false" onAction="#remover" prefHeight="26.0" prefWidth="78.0" text="Remover" />
 </AnchorPane>
