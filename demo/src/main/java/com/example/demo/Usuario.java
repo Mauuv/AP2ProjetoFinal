@@ -5,19 +5,15 @@ public class Usuario {
     private int id;
     private String usuario;
     private String senha;
-    private static boolean admin = false;
 
-    public Usuario(String usuario, String senha, boolean admin) {
-        this.usuario = usuario;
-        this.senha = senha;
-        this.admin = admin;
-    }
 
     public Usuario(String usuario, String senha) {
         this.usuario = usuario;
         this.senha = senha;
-        this.admin = false;
-        // se receber somente o usuario e senha, o usuário cadastrado não será admin
+    }
+
+    public Usuario() {
+
     }
 
     public int getId() {
@@ -43,21 +39,12 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public static boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
     
     @Override
     public String toString(){
         return "Id: " + id
         + System.lineSeparator() + "Usuário: " + usuario
-        + System.lineSeparator() + "Senha: " + senha
-        + System.lineSeparator() + "Admin: " + admin;
+        + System.lineSeparator() + "Senha: " + senha;
     }
     
     @Override
@@ -65,6 +52,7 @@ public class Usuario {
         if (this == o) return true;
         if (!(o instanceof Usuario)) return false;
         Usuario other = (Usuario) o;
-        return this.getUsuario().equals(other.getUsuario());
+        return this.getUsuario().equals(other.getUsuario())
+            && this.getSenha().equals(other.getSenha());
     }
 }

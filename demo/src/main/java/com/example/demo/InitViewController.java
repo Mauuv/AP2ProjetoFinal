@@ -7,18 +7,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class InitViewController {
 
-    Stage stage;
+
+    @FXML
+    private Button sair;
 
     @FXML
     public void StartGerenciamento(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("GerView.fxml"));
+        FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("LoginView.fxml"));
         Scene scene = new Scene(fx.load());
         Stage st = new Stage();
-        st.setTitle("Gerenciamento");
+        st.setTitle("Login");
         st.setScene(scene);
         st.show();
 
@@ -34,7 +37,8 @@ public class InitViewController {
         st.show();
     }
 
-    public void passaJanela(Stage s) {
-        stage = s;
+    @FXML
+    void Sair(ActionEvent event) {
+        ((Stage) sair.getScene().getWindow()).close();
     }
 }
