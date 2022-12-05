@@ -85,13 +85,20 @@ public class RemoveUpdateProductsController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja mesmo alterar? ", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 
         alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
-            prod.setDescricao(descricao.getText());
-            prod.setValorFinal(Double.parseDouble(valor.getText()));
-            prod.setEstoque(Double.parseDouble(estoque.getText()));
-            prod.setUnidade(unidade.getText());
-            prod.setId(id.getCellObservableValue(ListaProduto.getSelectionModel().getFocusedIndex()).getValue());
-            dao.alterar(prod);
+        try {
+            if (alert.getResult() == ButtonType.YES) {
+                prod.setDescricao(descricao.getText());
+                prod.setValorFinal(Double.parseDouble(valor.getText()));
+                prod.setEstoque(Double.parseDouble(estoque.getText()));
+                prod.setUnidade(unidade.getText());
+                prod.setId(id.getCellObservableValue(ListaProduto.getSelectionModel().getFocusedIndex()).getValue());
+                dao.alterar(prod);
+            }
+        } catch (NumberFormatException e) {
+            Alert alertException = new Alert(Alert.AlertType.ERROR, "Erro ao coletar dados, confira se os campos estão preenchidos corretamente", ButtonType.OK);
+
+            alertException.showAndWait();
+            // PDF
         }
         refresh();
     }

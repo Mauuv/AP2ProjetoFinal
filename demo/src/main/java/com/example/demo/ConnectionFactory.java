@@ -15,6 +15,7 @@ public class ConnectionFactory {
             System.out.println("Erro ao conectar no banco de dados!");
             e.printStackTrace();
             throw new RuntimeException(e);
+            // PDF
         }
     }
 }

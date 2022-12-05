@@ -19,22 +19,30 @@ public class GerViewController implements Initializable {
 
     @FXML
     void Cadastro(ActionEvent event) throws IOException {
+        try{
             FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("ProductRegistrationView.fxml"));
             Scene scene = new Scene(fx.load());
             Stage st = new Stage();
             st.setTitle("Cadastro de Produtos");
             st.setScene(scene);
             st.show();
+        } catch (IOException e) {
+            //PDF
+        }
     }
 
     @FXML
     void Remover(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("RemoveUpdateProductsView.fxml"));
-        Scene scene = new Scene(fx.load());
-        Stage st = new Stage();
-        st.setTitle("Alteracao de produtos");
-        st.setScene(scene);
-        st.show();
+        try{
+            FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("RemoveUpdateProductsView.fxml"));
+            Scene scene = new Scene(fx.load());
+            Stage st = new Stage();
+            st.setTitle("Alteracao de produtos");
+            st.setScene(scene);
+            st.show();
+        } catch (IOException e) {
+        //PDF
+        }
     }
     
     @Override

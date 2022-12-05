@@ -63,6 +63,7 @@ public class PdvViewController implements Initializable {
         } catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.WARNING, "Somente numeros inteiros", ButtonType.OK);
             alert.showAndWait();
+            //PDF
         }
         List<Produto> ListProduto = Collections.singletonList(dao.pesquisar(idProd));
         id.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("id"));
@@ -81,6 +82,7 @@ public class PdvViewController implements Initializable {
             } catch (NullPointerException e) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Produto não existe", ButtonType.OK);
                 alert.showAndWait();
+                //PDF
             }
         }
         TotalItens.setText(String.valueOf(soma));
@@ -158,17 +160,24 @@ public class PdvViewController implements Initializable {
             workbook.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+            //PDF
         } catch (IOException e) {
             throw new RuntimeException(e);
+            //PDF
         } catch (RuntimeException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao gerar nota", ButtonType.OK);
             alert.showAndWait();
+            //PDF
         }
     }
 
     @FXML
     void Return(ActionEvent event) throws IOException {
-        ((Stage)TxtProduto.getScene().getWindow()).close();
+        try{
+            ((Stage)TxtProduto.getScene().getWindow()).close();
+        } catch (IOException e) {
+            //PDF
+        }
     }
 
     @Override

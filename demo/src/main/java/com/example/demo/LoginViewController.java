@@ -28,29 +28,37 @@ public class LoginViewController implements Initializable {
 
     @FXML
     void login(ActionEvent event) throws IOException {
-        if (Valida(user.getText(), pwd.getText())) {
-            user.getScene().getWindow().hide();
-            FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("GerView.fxml"));
+        try{
+            if (Valida(user.getText(), pwd.getText())) {
+                user.getScene().getWindow().hide();
+                FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("GerView.fxml"));
+                Scene scene = new Scene(fx.load());
+                Stage st = new Stage();
+                st.setTitle("Gerenciamento");
+                st.setScene(scene);
+                st.show();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR,"ERRO, USUÁRIO OU SENHA INCORRETOS!!", ButtonType.OK);
+                alert.showAndWait();
+            }
+        } catch (IOException e) {
+        //PDF
+        }
+    } 
+
+    @FXML
+    void Lista(ActionEvent event) throws IOException {
+        try{
+            FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("ListProductsView.fxml"));
             Scene scene = new Scene(fx.load());
             Stage st = new Stage();
             st.setTitle("Gerenciamento");
             st.setScene(scene);
             st.show();
+        } catch (IOException e) {
+        //PDF
         }
-       else {
-            Alert alert = new Alert(Alert.AlertType.ERROR,"ERRO, USUÁRIO OU SENHA INCORRETOS!!", ButtonType.OK);
-            alert.showAndWait();
-        }
-    }
-
-    @FXML
-    void Lista(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(GerViewController.class.getResource("ListProductsView.fxml"));
-        Scene scene = new Scene(fx.load());
-        Stage st = new Stage();
-        st.setTitle("Gerenciamento");
-        st.setScene(scene);
-        st.show();
     }
 
     @FXML

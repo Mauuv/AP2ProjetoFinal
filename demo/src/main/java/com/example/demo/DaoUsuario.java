@@ -63,6 +63,7 @@ public class DaoUsuario implements Dao{
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao pesquisar usuário!!", ButtonType.OK);
             alert.showAndWait();
             throw new RuntimeException(e);
+            // PDF
         }
         return usuarios;
     }

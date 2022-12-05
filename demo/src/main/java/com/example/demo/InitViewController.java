@@ -18,23 +18,30 @@ public class InitViewController {
 
     @FXML
     public void StartGerenciamento(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("LoginView.fxml"));
-        Scene scene = new Scene(fx.load());
-        Stage st = new Stage();
-        st.setTitle("Login");
-        st.setScene(scene);
-        st.show();
-
+        try{
+            FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("LoginView.fxml"));
+            Scene scene = new Scene(fx.load());
+            Stage st = new Stage();
+            st.setTitle("Login");
+            st.setScene(scene);
+            st.show();
+        } catch (IOException e) {
+        //PDF
+        }
     }
 
     @FXML
     public void StartPDV(ActionEvent event) throws IOException {
-        FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("PDVView.fxml"));
-        Scene scene = new Scene(fx.load());
-        Stage st = new Stage();
-        st.setTitle("PDV");
-        st.setScene(scene);
-        st.show();
+        try{
+            FXMLLoader fx = new FXMLLoader(InitViewController.class.getResource("PDVView.fxml"));
+            Scene scene = new Scene(fx.load());
+            Stage st = new Stage();
+            st.setTitle("PDV");
+            st.setScene(scene);
+            st.show();
+        } catch (IOException e) {
+            //PDF
+        }
     }
 
     @FXML

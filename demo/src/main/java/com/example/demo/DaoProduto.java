@@ -28,6 +28,7 @@ public class DaoProduto implements Dao {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao inserir", ButtonType.OK);
             alert.showAndWait();
             throw new RuntimeException(e);
+            // PDF
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cadastrado com sucesso", ButtonType.OK);
         alert.showAndWait();
@@ -52,6 +53,7 @@ public class DaoProduto implements Dao {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao alterar", ButtonType.OK);
             alert.showAndWait();
             throw new RuntimeException(e);
+            // PDF
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Alterado com sucesso", ButtonType.OK);
         alert.showAndWait();
@@ -73,6 +75,7 @@ public class DaoProduto implements Dao {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erro na remoção", ButtonType.OK);
             alert.showAndWait();
             throw new RuntimeException(e);
+            // PDF
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Removido com sucesso", ButtonType.OK);
         alert.showAndWait();
@@ -118,6 +121,7 @@ public class DaoProduto implements Dao {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Erro ao pesquisar produtos!!", ButtonType.OK);
             alert.showAndWait();
             throw new RuntimeException(e);
+            // PDF
         }
         return produtos;
     }

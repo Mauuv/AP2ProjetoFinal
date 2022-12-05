@@ -59,17 +59,24 @@ public class ProductRegistrationController implements Initializable {
 
     @FXML
     void btnCadastrar(ActionEvent event) {
-        Produto prod = new Produto();
-        prod.setDescricao(descricao.getText());
-        prod.setValorFinal(Double.parseDouble(valor.getText()));
-        prod.setEstoque(Integer.parseInt(quantidade.getText()));
-        prod.setUnidade(unidade.getText());
-        DaoProduto dao = new DaoProduto();
-        if (dao.pesquisaProd(prod)) {
-            System.out.println("Ja existe um produto com essas características!!");
-        } else {
-            dao.adicionar(prod);
-            refresh();
+        try{
+            Produto prod = new Produto();
+            prod.setDescricao(descricao.getText());
+            prod.setValorFinal(Double.parseDouble(valor.getText()));
+            prod.setEstoque(Integer.parseInt(quantidade.getText()));
+            prod.setUnidade(unidade.getText());
+            DaoProduto dao = new DaoProduto();
+            if (dao.pesquisaProd(prod)) {
+                System.out.println("Ja existe um produto com essas características!!");
+            } else {
+                dao.adicionar(prod);
+                refresh();
+            }
+        } catch (NumberFormatException e) {
+            Alert alertException = new Alert(Alert.AlertType.ERROR, "Erro ao coletar dados, confira se os campos estão preenchidos corretamente", ButtonType.OK);
+
+            alertException.showAndWait();
+            //PDF
         }
     }
 
